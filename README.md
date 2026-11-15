@@ -24,7 +24,7 @@ I always thought that using duels to rank items would be much more useful (and r
 
 Then, just show the scores on a axis (or two), and you have a nice representation of your items!
 
-So, I made an app that does just that, enjoy 🎁!
+So, I made an website that does just that, enjoy 🎁!
 
 ## 🚀 How to use
 
@@ -44,7 +44,7 @@ Then, either use one of the templates, or make your own!
 Feel free to contact me if you encounter any problems or if you have any suggestions for new features you'd like to see included.
 
 - 🐛 **Bug reports & issues:** Use [GitHub Issues](https://github.com/loic-lhf/RankedList/issues)
-- 🦋 For anything else, contact me on [Bluesky](https://bsky.app/profile/loic-lhf.bsky.social)!
+- 🦋 **For anything else**: contact me on [Bluesky](https://bsky.app/profile/loic-lhf.bsky.social)!
 
 
 ## ⚠️ Disclaimer
