@@ -1,0 +1,20 @@
+/* Blowfish dark: neutral-800 page, neutral-700 borders, lime-400 accents */
+:root {
+	color-scheme: dark;
+	--pg: rgb(var(--color-neutral-800));
+	--bg: rgb(var(--color-neutral-900));
+	--sf: rgb(var(--color-neutral-800));
+	--tx: rgb(var(--color-neutral-200));
+	--mu: rgb(var(--color-neutral-400));
+	--bd: rgb(var(--color-neutral-700));
+	--ac: rgb(var(--color-primary-400));
+	--acx: rgb(var(--color-neutral-800));
+	--tie: rgb(var(--color-secondary-400));
+	--ar: rgb(var(--color-neutral-500));
+	--btn-bd: rgb(var(--color-primary-600));
+	--btn-tx: rgb(var(--color-primary-400));
+	--btn-hbg: rgb(var(--color-primary-400));
+	--btn-htx: rgb(var(--color-neutral-800));
+	--sb-thumb: oklch(43.9% 0 0);
+	--sb-track: oklch(26.9% 0 0)
+}

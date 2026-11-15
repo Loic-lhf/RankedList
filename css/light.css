@@ -1,0 +1,20 @@
+/* Blowfish light: white page, stone text, lime primary, emerald secondary */
+:root {
+	color-scheme: light;
+	--pg: rgb(var(--color-neutral));
+	--bg: rgb(var(--color-neutral-50));
+	--sf: rgb(var(--color-neutral));
+	--tx: rgb(var(--color-neutral-900));
+	--mu: rgb(var(--color-neutral-500));
+	--bd: rgb(var(--color-neutral-300));
+	--ac: rgb(var(--color-primary-600));
+	--acx: rgb(var(--color-neutral));
+	--tie: rgb(var(--color-secondary-700));
+	--ar: rgb(var(--color-neutral-400));
+	--btn-bd: rgb(var(--color-primary-400));
+	--btn-tx: rgb(var(--color-primary-700));
+	--btn-hbg: rgb(var(--color-primary-600));
+	--btn-htx: rgb(var(--color-neutral));
+	--sb-thumb: oklch(70.8% 0 0);
+	--sb-track: oklch(92.2% 0 0)
+}

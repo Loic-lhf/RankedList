@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ranked Items Maker</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/avocado.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/theme.js"></script>
+</head>
+
+
+<body>
+    <header class="bar"><div class="bar-in">
+        <h1 class="brand">
+            <i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i>
+            <span>Ranked Items Maker</span>
+        </h1>
+        <nav class="sw">
+            <button id="impbtn" data-i18n="import_btn"></button>
+            <div class="dd">
+                <button id="langbtn" aria-haspopup="listbox" aria-expanded="false">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                </button>
+                <ul id="langmenu" class="menu hide" role="listbox"></ul>
+            </div>
+            <button id="themebtn" aria-label="Switch theme"></button></nav>
+    </div></header>
+
+    <main>
+        <p class="sub" data-i18n="sub" style="margin:0 0 16px"></p>
+
+        <section id="live">
+            <div class="row" style="justify-content:space-between;margin-bottom:10px">
+                <h2 style="margin:0" data-i18n="live_h"></h2>
+                <span class="row"><label class="zoom"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i><input type="range" id="sz" min="0.5" max="2.5" step="0.1" value="1" data-i18n-aria="size_l"></label><button id="exportimg" class="hide"><i class="fa-solid fa-image" aria-hidden="true"></i> <span data-i18n="exp"></span></button><button id="resetpos" class="hide" data-i18n="resetpos"></button><button id="reset" class="hide" data-i18n="reset"></button></span>
+            </div>
+
+            <div id="stage">
+                <div id="axis"></div>
+                <input id="axl" class="axe lx" maxlength="30"><input id="axr" class="axe rx" maxlength="30">
+                <input id="ayr" class="axe ty" maxlength="30"><input id="ayl" class="axe by" maxlength="30">
+            </div>
+            <div class="cap" id="axm"></div>
+            <div id="tray" class="tray hide">
+                <div class="sub" id="trayh" style="margin:0 0 8px;font-size:.85rem"></div>
+                <div id="trayitems" class="trayitems"></div>
+            </div>
+        </section>
+
+        <section id="setup">
+            <h2 data-i18n="items_h"></h2>
+            <p class="sub" style="margin:0 0 14px" data-i18n="items_d"></p>
+            <div class="src">
+                <div class="srcbox">
+                    <label class="srch" for="names"><i class="fa-solid fa-keyboard" aria-hidden="true"></i> <span data-i18n="src_text"></span></label>
+                    <textarea id="names" data-i18n-ph="ph_names"></textarea>
+                </div>
+                <div class="srcbox">
+                    <div class="srch"><i class="fa-solid fa-image" aria-hidden="true"></i> <span data-i18n="src_img"></span></div>
+                    <label class="drop" id="drop" for="files" tabindex="0">
+                        <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                        <b data-i18n="drop_t"></b>
+                        <span data-i18n="drop_d"></span>
+                    </label>
+                    <input type="file" id="files" accept="image/*" multiple hidden>
+                    <p class="sub" style="margin:0;font-size:.8rem" data-i18n="files_note"></p>
+                </div>
+            </div>
+            <div class="thumbs" id="thumbs"></div>
+            <p id="count" class="sub" style="margin:10px 0 0"></p>
+            <div class="row" style="margin-top:10px">
+                <span id="impnote" class="sub" style="margin:0"></span>
+                <button id="impclr" class="hide" data-i18n="clr"></button>
+            </div>
+            <div class="row" style="margin-top:12px">
+                <label><input type="checkbox" id="axes2" checked> 
+                    <span data-i18n="two_axes"></span>
+                </label>
+                <span class="tip" tabindex="0" data-i18n-tip="two_tip"><i class="fa-solid fa-info" aria-hidden="true"></i></span>
+            </div>
+            <p class="row" style="margin:16px 0 0">
+                <button class="p" id="validate" data-i18n="validate" disabled></button>
+                <button id="clearall"><i class="fa-solid fa-trash" aria-hidden="true"></i> <span data-i18n="clear_all"></span></button>
+            </p>
+        </section>
+
+        <section id="tplsec">
+            <div class="row" style="justify-content:space-between;margin-bottom:10px">
+                <h2 style="margin:0" data-i18n="tpl_h"></h2>
+                <span class="row" id="tnav"><button id="tprev" class="ib" data-i18n-aria="prev"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><button id="tnext" class="ib" data-i18n-aria="next"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></span>
+            </div>
+            <div id="tcar" class="car"></div>
+        </section>
+
+        <section id="play" class="hide">
+            <div class="meta"><span id="pl"></span><span id="pr"></span></div>
+            <div class="prog"><i id="bar"></i></div>
+            <div id="arena"></div>
+            <div id="btns">
+                <div class="rt hide" id="rt1"></div>
+                <div class="btns"><button id="bl" class="nb"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span></span></button><button id="bt" class="t" data-i18n="tie"></button><button id="br" class="nb"><span></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button><button id="bs1" class="hide" data-i18n="skip"></button></div>
+                <div id="row2" class="hide">
+                    <div class="rt" id="rt2"></div>
+                    <div class="btns">
+                        <button id="bl2" class="nb"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span></span></button>
+                        <button id="bt2" class="t" data-i18n="tie"></button>
+                        <button id="br2" class="nb"><span></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                        <button id="bs2" data-i18n="skip"></button>
+                    </div>
+                </div>
+            </div>
+            <p class="row" style="margin:12px 0 0">
+                <button id="undo" data-i18n="undo"></button>
+                <span class="sub" id="keyshint" style="margin:0;font-size:.8rem" data-i18n="keys"></span>
+            </p>
+        </section>
+
+        <section id="res" class="hide">
+            <h2 data-i18n="res_h"></h2>
+            <textarea id="json" readonly></textarea>
+            <p class="row" style="margin:10px 0 0">
+                <button id="copy" data-i18n="copy"></button>
+                <button class="p" id="dl" data-i18n="dl"></button>
+            </p>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="bar-in">
+            <a href="#" id="foot_l"><span data-i18n="foot_by"></span> Loïc LHF</a>
+            <a href="#" id="foot_r"><span data-i18n="foot_more"></span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </div>
+    </footer>
+
+    <div id="imodal" class="hide">
+        <div class="mbox">
+            <h2 data-i18n="imp_h"></h2>
+            <p class="sub" data-i18n="imp_d" style="margin:0 0 14px"></p>
+            <div class="choices">
+                <button class="choice" id="impSession">
+                    <span class="ic"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></span>
+                    <b data-i18n="imp_session"></b>
+                    <span data-i18n="imp_session_d"></span>
+                </button>
+                <button class="choice" id="impTpl">
+                    <span class="ic"><i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i></span>
+                    <b data-i18n="imp_tpl"></b>
+                    <span data-i18n="imp_tpl_d"></span>
+                </button>
+            </div>
+            <input type="file" id="imp" accept=".json,application/json" hidden>
+            <p id="imperr" class="sub" style="margin:12px 0 0;color:var(--tie)"></p>
+            <p style="margin:12px 0 0">
+                <button id="icancel" data-i18n="back"></button>
+            </p>
+        </div>
+    </div>
+
+    <div id="modal" class="hide">
+        <div class="mbox">
+            <div id="mstep1">
+                <h2 data-i18n="how_h"></h2>
+                <div class="choices">
+                    <button class="choice" id="chManual">
+                        <span class="ic"><i class="fa-solid fa-hand" aria-hidden="true"></i></span>
+                        <b data-i18n="ch_manual"></b>
+                        <span data-i18n="ch_manual_d"></span>
+                    </button>
+                    <button class="choice" id="chAssist">
+                        <span class="ic"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>
+                        <b data-i18n="ch_assist"></b>
+                        <span data-i18n="ch_assist_d"></span>
+                    </button>
+                </div>
+                <p style="margin:16px 0 0">
+                    <button id="mcancel" data-i18n="back"></button>
+                </p>
+            </div>
+            <div id="mstep2" class="hide">
+                <h2 data-i18n="method_h"></h2>
+                <div id="modes"></div>
+                <div class="row" id="params">
+                    <label>
+                        <span data-i18n="per_item"></span> 
+                        <input type="number" id="target" min="1" max="50" value="6" style="width:90px">
+                    </label>
+                    <span id="kwrap" class="row">
+                        <label>
+                            <span data-i18n="kfac"></span>
+                            <select id="kf" style="width:auto">
+                                <option value="16" data-i18n="k16"></option>
+                                <option value="32" data-i18n="k32" selected></option>
+                                <option value="64" data-i18n="k64"></option>
+                            </select>
+                        </label>
+                    <span class="tip" tabindex="0" data-i18n-tip="ktip"><i class="fa-solid fa-info" aria-hidden="true"></i></span></span>
+                </div>
+                <p class="row" style="margin:16px 0 0">
+                    <button id="mback" data-i18n="back"></button>
+                    <button class="p" id="start" data-i18n="start" disabled></button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/templates.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
